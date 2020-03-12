@@ -1,0 +1,22 @@
+.App {
+  display: grid;
+  grid-template-rows: minmax(4em, 4em);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'header header header'
+    'nav main main'
+    '... main main';
+}
+
+.App__header {
+  grid-area: header;
+  justify-self: center;
+}
+
+.Main {
+  grid-area: main;
+}
+
+.Sidebar {
+  grid-area: nav;
+}

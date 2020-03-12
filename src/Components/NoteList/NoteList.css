@@ -1,0 +1,23 @@
+.Main.note_list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.Main.note_list > li {
+  padding: 8px;
+  margin-top: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px 3px gray;
+  font-size: 1.1em;
+  text-align: center;
+  max-width: 75%;
+  min-height: 4em;
+}
+
+@media screen and (min-width: 600px) {
+  .Main.note_list {
+    grid-template-columns: 1fr 1fr;
+  }
+}

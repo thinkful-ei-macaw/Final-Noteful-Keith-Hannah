@@ -1,0 +1,25 @@
+.Sidebar > ul {
+  list-style-type: none;
+}
+
+.Sidebar > ul > li {
+  display: contents;
+}
+
+.Sidebar a {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  margin: 0 0;
+  border: 1px solid black;
+  font-size: 1.2em;
+  line-height: 3em;
+  max-width: 75%;
+  min-height: 3em;
+  font-family: sans-serif;
+}
+
+.Sidebar__selected {
+  background-color: beige;
+}
