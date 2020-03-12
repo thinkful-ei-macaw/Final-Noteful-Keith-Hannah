@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import cuid from 'cuid';
 
 
-class NewFolder extends Component {
+class NewFolder extends React.Component {
 
     constructor(props) {
 		super(props)
 
 		this.state = {
-			username: '',
+			name: '',
 			comments: '',
 			topic: 'react'
 		}
