@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './NoteDetails.css';
 import NoteDetailsNav from '../NoteDetailsNav/NoteDetailsNav';
 import NoteContext from '../../NoteContext';
+import ErrorPage from '../../Error'
 
 class NoteDetails extends Component {
   static contextType = NoteContext;
@@ -28,7 +29,9 @@ class NoteDetails extends Component {
 
     return (
       <>
+        <ErrorPage>
         <NoteDetailsNav folder={folder} />
+        </ErrorPage>
         <section className="Main">
           <div className="Main__note_header">
             <h3>{name}</h3>
