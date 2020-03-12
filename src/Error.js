@@ -17,6 +17,7 @@ class ErrorPage extends React.Component {
                 <main className="error-page">
                     <h1>Something seems to have gone wrong</h1>
                     <p>Try refreshing the page</p>
+                    <p>We're really sorry about this, please don't hurt us</p>
                 </main>
             );
         }

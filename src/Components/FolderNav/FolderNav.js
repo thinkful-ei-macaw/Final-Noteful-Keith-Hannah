@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './FolderNav.css';
 import { NavLink } from 'react-router-dom';
 import NoteContext from '../../NoteContext';
-import ErrorPage from '../../Error'
+
 
 class FolderNav extends Component {
   static contextType = NoteContext;
@@ -14,17 +14,20 @@ class FolderNav extends Component {
           {folders.map(folder => {
             return (
               <li key={folder.id}>
-                <ErrorPage>
+              
                 <NavLink
                   to={`/note-list/${folder.id}`}
                   activeClassName="Sidebar__selected"
                 >
                   {folder.name}
                 </NavLink>
-                </ErrorPage>
+              
               </li>
             );
           })}
+          {/* <li>
+            <NewFolder />
+          </li> */}
         </ul>
       </nav>
     );

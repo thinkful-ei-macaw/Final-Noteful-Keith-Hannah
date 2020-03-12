@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './NoteList.css';
 import { Link } from 'react-router-dom';
 import NoteContext from '../../NoteContext';
-import ErrorPage from '../../Error'
 
 class NoteList extends Component {
   formatDate(date) {
@@ -30,9 +29,9 @@ class NoteList extends Component {
           return (
             <li key={note.id}>
               <h2>
-                <ErrorPage>
+            
                 <Link to={`/note-details/${note.id}`}>{note.name}</Link>
-                </ErrorPage>
+              
               </h2>
               <p>{date}</p>
               <button onClick={() => deleteNote(note.id)}>Delete</button>
