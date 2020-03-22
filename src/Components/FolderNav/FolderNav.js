@@ -23,11 +23,17 @@ class FolderNav extends Component {
                 </NavLink>
               
               </li>
+              
             );
           })}
-          {/* <li>
-            <NewFolder />
-          </li> */}
+          <li>
+          <button
+            className="Sidebar__new"
+            onClick={() => this.props.history.push('/NewFolder')}
+          >
+            Add Folder
+          </button>
+          </li>
         </ul>
       </nav>
     );

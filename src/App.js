@@ -6,6 +6,7 @@ import NoteDetails from './Components/NoteDetails/NoteDetails';
 import { Route, Link, Switch } from 'react-router-dom';
 import NoteContext from './NoteContext';
 import ErrorPage from './Error'
+import NewFolder from './Components/FolderNav/NewFolder';
 
 class App extends Component {
   constructor(props) {
@@ -63,7 +64,9 @@ class App extends Component {
             <Route path="/note-list/:id" component={NoteList} />
             )} />
             <Route path="/note-details/:id" component={NoteDetails} />
+            <Route path="/NewFolder" component={NewFolder} />
             <Route path="/" render={() => <div>404 Not Found</div>} />
+            
           </Switch>
         </NoteContext.Provider>
         </ ErrorPage>

@@ -1,68 +1,59 @@
 import React, { Component } from 'react';
 import cuid from 'cuid';
+import NoteContext from '../../NoteContext';
 
 
 class NewFolder extends React.Component {
+
+	static contextType = NoteContext;
 
     constructor(props) {
 		super(props)
 
 		this.state = {
 			name: '',
-			comments: '',
-			topic: 'react'
 		}
 	}
 
-	handleUsernameChange = event => {
+	handleNewFolderSubmit(event) {
+    const folderName = this.state;
+    const folder = {
+			name: folderName,
+			id: cuid()
+    };
+    fetch('http://localhost:9090/folders/', {
+      method: 'POST',
+      body: JSON.stringify(folder),
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+				console.log(data);
+			});
+			
+  }
+
+	updateFolderName = event => {
 		this.setState({
-			username: event.target.value
+			name: event.target.value
 		})
 	}
 
-	handleCommentsChange = event => {
-		this.setState({
-			comments: event.target.value
-		})
-	}
-
-	handleTopicChange = event => {
-		this.setState({
-			topic: event.target.value
-		})
-	}
-
-	handleSubmit = event => {
-		alert(`${this.state.username} ${this.state.comments} ${this.state.topic}`)
-		event.preventDefault()
-	}
 
 	render() {
-		const { username, comments, topic } = this.state
+		const { folderName } = this.state
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<form onSubmit={this.handleNewFolderSubmit()}>
 				<div>
-					<label>Username </label>
+					<label>Folder Name:</label>
 					<input
 						type="text"
-						value={username}
-						onChange={this.handleUsernameChange}
+						value={ folderName }
+						
+					
 					/>
-				</div>
-				<div>
-					<label>Comments</label>
-					<textarea
-						value={comments}
-						onChange={this.handleCommentsChange}
-					/>
-				</div>
-				<div>
-					<label>Topic</label>
-					<select value={topic} onChange={this.handleTopicChange}>
-						<option value="react">React</option>
-						<option value="angular">Angular</option>
-						<option value="vue">Vue</option>
-					</select>
 				</div>
 				<button type="submit">Submit</button>
 			</form>
