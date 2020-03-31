@@ -15,8 +15,9 @@ class NewFolder extends React.Component {
 		}
 	}
 
-	handleNewFolderSubmit(event) {
+	handleNewFolderSubmit = (event) => {
 		// event.preventDefault();
+		console.log('click');
     const folderName = this.state;
     const folder = {
 			name: folderName,
@@ -37,7 +38,7 @@ class NewFolder extends React.Component {
 			
   }
 
-	updateFolderName(event){
+	updateFolderName = (event) => {
 		console.log(event)
 		this.setState({
 			name: event.name.value
@@ -58,7 +59,7 @@ class NewFolder extends React.Component {
 					
 					/>
 				</div>
-				<button type="submit">Submit</button>
+				<button type="submit" value='Submit'>Submit</button>
 			</form>
 		)
 	}
