@@ -58,6 +58,7 @@ class NewFolder extends React.Component {
 						
 					
 					/>
+					
 				</div>
 				<input type="submit" value='Submit'>Submit</input>
 			</form>
