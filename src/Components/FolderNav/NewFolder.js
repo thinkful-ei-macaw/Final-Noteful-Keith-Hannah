@@ -32,7 +32,7 @@ class NewFolder extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-				this.updateFolderName(data);
+				
 			});
 			
   }

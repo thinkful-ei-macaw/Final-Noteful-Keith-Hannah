@@ -42,6 +42,19 @@ class App extends Component {
     this.setNotes(newNotes);
   };
 
+
+  setFolders = folders => {
+    this.setState({
+      folders: folders
+    });
+  }
+
+
+  newFolders = id => {
+    const newFolders = this.state.folders.filter(f => f.id !==id);
+    this.setFolders(newFolders);
+  }
+
   render() {
     const contextValue = {
       notes: this.state.notes,
