@@ -16,9 +16,9 @@ class NewFolder extends React.Component {
 	}
 
 	handleNewFolderSubmit = (event) => {
-		// event.preventDefault();
-		console.log('click');
-    const folderName = this.state;
+		event.preventDefault();
+	
+    const folderName = this.state.name;
     const folder = {
 			name: folderName,
 			id: cuid()
@@ -60,7 +60,7 @@ class NewFolder extends React.Component {
 					/>
 					
 				</div>
-				<input type="submit" value='Submit'>Submit</input>
+				<input type="submit" value='Submit'/>
 			</form>
 		)
 	}
