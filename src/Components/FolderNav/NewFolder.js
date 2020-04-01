@@ -32,22 +32,21 @@ class NewFolder extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-				// console.log(data);
 				this.updateFolderName(data);
 			});
 			
   }
 
 	updateFolderName = (event) => {
-		console.log(event)
+		console.log(event);
 		this.setState({
-			name: event.name.value
+			name: event.target.value 
 		})
+		
 	}
 
-
 	render() {
-		const { folderName } = this.state
+		const { folderName } = this.state.name
 		return (
 			<form onSubmit={this.handleNewFolderSubmit}>
 				<div>
@@ -55,6 +54,7 @@ class NewFolder extends React.Component {
 					<input
 						type="text"
 						value={ folderName }
+						onChange={this.updateFolderName}
 						
 					
 					/>
