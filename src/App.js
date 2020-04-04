@@ -43,17 +43,7 @@ class App extends Component {
   };
 
 
-  setFolders = folders => {
-    this.setState({
-      folders: folders
-    });
-  }
 
-
-  newFolders = id => {
-    const newFolders = this.state.folders.filter(f => f.id !==id);
-    this.setFolders(newFolders);
-  }
 
   render() {
     const contextValue = {
