@@ -43,6 +43,14 @@ class App extends Component {
   };
 
 
+  handleAddFolder = (folder) => {
+    let newFolders = this.state.folders.slice(0);
+    newFolders.push(folder);
+    this.setState({
+       folders: newFolders
+    })
+    console.log('handleAddFolderCalled', folder) 
+   } 
 
 
   render() {
@@ -50,6 +58,7 @@ class App extends Component {
       notes: this.state.notes,
       folders: this.state.folders,
       deleteNote: this.deleteNote,
+      addFolder: this.handleAddFolder,
     };
 
     return (

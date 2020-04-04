@@ -32,13 +32,12 @@ class NewFolder extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-				
+				this.context.addFolder(folder)
 			});
 			
   }
 
 	updateFolderName = (event) => {
-		console.log(event);
 		this.setState({
 			name: event.target.value 
 		})
