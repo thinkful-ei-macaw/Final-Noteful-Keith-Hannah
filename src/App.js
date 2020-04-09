@@ -7,6 +7,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 import NoteContext from './NoteContext';
 import ErrorPage from './Error'
 import NewFolder from './Components/FolderNav/NewFolder';
+import NewNote from './Components/NoteList/NewNote';
 
 class App extends Component {
   constructor(props) {
@@ -52,6 +53,14 @@ class App extends Component {
     console.log('handleAddFolderCalled', folder) 
    } 
 
+   handleAddNote = (note) => {
+     let newNotes = JSON.parse(JSON.stringify(this.state.notes));
+      newNotes.push(note);
+      this.setState({
+        notes: newNotes
+      });
+   }
+
 
   render() {
     const contextValue = {
@@ -59,6 +68,7 @@ class App extends Component {
       folders: this.state.folders,
       deleteNote: this.deleteNote,
       addFolder: this.handleAddFolder,
+      addNote: this.handleAddNote
     };
 
     return (
@@ -77,6 +87,7 @@ class App extends Component {
             )} />
             <Route path="/note-details/:id" component={NoteDetails} />
             <Route path="/NewFolder" component={NewFolder} />
+            <Route path='/AddNote' component={NewNote} />
             <Route path="/" render={() => <div>404 Not Found</div>} />
             
           </Switch>

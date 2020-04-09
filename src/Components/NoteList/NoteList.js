@@ -20,25 +20,39 @@ class NoteList extends Component {
   }
 
   render() {
+    // console.log(this.context.notes)
     const notes = this.getNotes();
     const deleteNote = this.context.deleteNote;
     return (
-      <ul className="Main note_list">
-        {notes.map(note => {
-          const date = this.formatDate(note.modified);
+      <div className='noteList'>
+        <button onClick={() => this.props.history.push('/AddNote')}>
+          Add Note
+        </button>
+      <div>
+        <ul className="Main note_list">
+
+            {notes.map(note => {
+              const date = this.formatDate(note.modified);
           return (
+    
             <li key={note.id}>
               <h2>
-            
+    
                 <Link to={`/note-details/${note.id}`}>{note.name}</Link>
-              
+      
               </h2>
               <p>{date}</p>
               <button onClick={() => deleteNote(note.id)}>Delete</button>
             </li>
           );
-        })}
-      </ul>
+          })}
+          </ul>
+        </div>
+      </div>
+
+      
+
+    
     );
   }
 }
