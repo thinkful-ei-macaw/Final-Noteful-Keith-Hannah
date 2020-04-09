@@ -22,7 +22,7 @@ handleNewNoteSubmit = (event) => {
 
   const noteName = this.state.name;
   const noteContent = this.state.content;
-  const noteFolder = this.state.folder;
+  const noteFolder = event.target['folder-choice'].value;
   let current_datetime = new Date();
   const note = {
     name: noteName,
@@ -43,7 +43,7 @@ handleNewNoteSubmit = (event) => {
       this.context.addNote(note)
     });
     console.log(note);
-    console.log(this.state);
+    console.log(noteFolder);
 }
 
 updateNoteName = (event) => {
@@ -58,19 +58,20 @@ updateNoteContent = (event) => {
   })
 }
 
-updateNoteFolder = (event) => {
+updateFolder = (event) => {
+  let noteFolder = event.target['folder-choice'].value;
   this.setState({
-    folder: event.target.value
+    folder: noteFolder
   })
-
 }
+
   
 
 
   render(){
+    let folders = this.context.folders;
     const { noteName } = this.state.name;
     const { noteContent } = this.state.content;
-    const { noteFolder } = this.state.folder;
     return (
       <div className='new note-form'>
       <h1>New Note</h1>
@@ -84,12 +85,17 @@ updateNoteFolder = (event) => {
         <textarea 
         value={ noteContent }
         onChange = {this.updateNoteContent}></textarea>
-        <label>Folder:</label>
-        
-        <input
-        type='text'
-        value= { noteFolder }
-        onChange = {this.updateNoteFolder}></input>
+
+        <label htmlFor="folder-choice">Select Folder </label>
+        <select name="folder-choice">
+          {folders.map(item =>{
+            return(
+              
+                <option key={item.id} value={item.id}>{item.name}</option>
+            
+            )
+          })}
+          </select>
        <button>Submit</button>
       </form>
 
