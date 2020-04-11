@@ -19,10 +19,13 @@ class NewNote extends React.Component{
 
 handleNewNoteSubmit = (event) => {
   event.preventDefault();
-
+  console.log(this.context.folders)
   const noteName = this.state.name;
   const noteContent = this.state.content;
-  const noteFolder = this.state.folderId;
+  let noteFolder = this.state.folderId;
+  if (this.state.folderId === ''){
+    noteFolder = this.context.folders[0].id;
+  }
   let current_datetime = new Date();
   const note = {
     name: noteName,
@@ -94,7 +97,6 @@ updateFolder = (event) => {
 
         <label htmlFor="folder-choice">Select Folder </label>
         <select name="folder-choice" onChange={this.updateFolder}>
-          <option  >Select Folder</option>
           {folders.map(item =>{
             return(
                 <option key={item.id} value={item.id}>{item.name}</option>
