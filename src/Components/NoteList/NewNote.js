@@ -13,7 +13,7 @@ class NewNote extends React.Component{
   this.state = {
     name: '',
     content: '',
-    folder: ''
+    folderId: ''
   }
 }
 
@@ -22,13 +22,13 @@ handleNewNoteSubmit = (event) => {
 
   const noteName = this.state.name;
   const noteContent = this.state.content;
-  const noteFolder = event.target['folder-choice'].value;
+  const noteFolder = this.state.folderId;
   let current_datetime = new Date();
   const note = {
     name: noteName,
     id: cuid(),
     content: noteContent,
-    folder: noteFolder,
+    folderId: noteFolder,
     modified: current_datetime.toString()
   };
   fetch('http://localhost:9090/notes/', {
@@ -42,8 +42,12 @@ handleNewNoteSubmit = (event) => {
     .then(data => {
       this.context.addNote(note)
     });
+
+    this.props.history.push('/');
+
     console.log(note);
     console.log(noteFolder);
+    console.log(this.state);
 }
 
 updateNoteName = (event) => {
@@ -59,9 +63,9 @@ updateNoteContent = (event) => {
 }
 
 updateFolder = (event) => {
-  let noteFolder = event.target['folder-choice'].value;
+  console.log(event.target.value);
   this.setState({
-    folder: noteFolder
+    folderId: event.target.value
   })
 }
 
@@ -75,32 +79,33 @@ updateFolder = (event) => {
     return (
       <div className='new note-form'>
       <h1>New Note</h1>
-      <form className='new-note' onSubmit = {this.handleNewNoteSubmit}>
+      <form className='new-note' onSubmit = {this.handleNewNoteSubmit} >
         <label>Name:</label>
         <input 
+        required
         type='text'
         value = { noteName }
         onChange = {this.updateNoteName}></input>
         <label>Content:</label>
         <textarea 
+        required
         value={ noteContent }
         onChange = {this.updateNoteContent}></textarea>
 
         <label htmlFor="folder-choice">Select Folder </label>
-        <select name="folder-choice">
+        <select name="folder-choice" onChange={this.updateFolder}>
+          <option disabled >Select Folder</option>
           {folders.map(item =>{
             return(
-              
                 <option key={item.id} value={item.id}>{item.name}</option>
             
             )
           })}
           </select>
-       <button>Submit</button>
+       <button >Submit</button>
       </form>
 
       </div>
-
     )
   }
 }

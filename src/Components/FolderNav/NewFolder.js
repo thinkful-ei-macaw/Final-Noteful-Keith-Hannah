@@ -34,6 +34,8 @@ class NewFolder extends React.Component {
       .then(data => {
 				this.context.addFolder(folder)
 			});
+
+			this.props.history.push('/');
 			
   }
 
@@ -54,12 +56,13 @@ class NewFolder extends React.Component {
 						type="text"
 						value={ folderName }
 						onChange={this.updateFolderName}
+						required
 						
 					
 					/>
 					
 				</div>
-				<input type="submit" value='Submit'/>
+				<input  type="submit" value='Submit'/>
 			</form>
 		)
 	}

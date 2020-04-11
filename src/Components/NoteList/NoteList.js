@@ -10,6 +10,7 @@ class NoteList extends Component {
   static contextType = NoteContext;
 
   getNotes() {
+    // console.log(this.context.notes)
     if (this.props.match.params.id) {
       return this.context.notes.filter(
         note => note.folderId === this.props.match.params.id,

@@ -54,6 +54,7 @@ class App extends Component {
    } 
 
    handleAddNote = (note) => {
+     console.log(note);
      let newNotes = JSON.parse(JSON.stringify(this.state.notes));
       newNotes.push(note);
       this.setState({
