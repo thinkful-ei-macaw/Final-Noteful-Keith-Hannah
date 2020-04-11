@@ -94,7 +94,7 @@ updateFolder = (event) => {
 
         <label htmlFor="folder-choice">Select Folder </label>
         <select name="folder-choice" onChange={this.updateFolder}>
-          <option disabled >Select Folder</option>
+          <option  >Select Folder</option>
           {folders.map(item =>{
             return(
                 <option key={item.id} value={item.id}>{item.name}</option>
